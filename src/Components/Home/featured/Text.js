@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { easePolyOut } from 'd3-ease';
 import Animate from 'react-move/Animate';
 
+import FeaturePlayer from '../../../Resources/images/featured_player.png'
+
 class Text extends Component {
 
     animateNumber = () => (
@@ -27,7 +29,7 @@ class Text extends Component {
                             opacity,
                             transform: `translate(260px,170px) rotateY(${rotate}deg)`
                         }}>
-                        3
+                        2
                     </div>
                 )
             }}
@@ -41,14 +43,14 @@ class Text extends Component {
             start={{
                 opacity:0,
                 x:503,
-                y:450
+                y:430
 
             }}
 
             enter={{
                 opacity:1,
                 x:[273],
-                y:[450],
+                y:[430],
                 timing: {duration: 500, ease: easePolyOut}
             }}
         >
@@ -67,11 +69,75 @@ class Text extends Component {
         </Animate>
     )
 
+    animateSecond = () => (
+        <Animate
+            show={true}
+
+            start={{
+                opacity:0,
+                x:503,
+                y:560
+
+            }}
+
+            enter={{
+                opacity:1,
+                x:[273],
+                y:[560],
+                timing: {duration: 500, ease: easePolyOut}
+            }}
+        >
+            {({opacity,x,y}) => {
+                return(
+                    <div 
+                        className="featured_second"
+                        style={{
+                            opacity,
+                            transform: `translate(${x}px,${y}px)`
+                        }}>
+                        Championships
+                    </div>
+                )
+            }}
+        </Animate>
+    )
+
+    animatePlayer = () => (
+        <Animate
+            show={true}
+
+            start={{
+                opacity:0,
+            }}
+
+            enter={{
+                opacity:[1],
+                timing: {delay: 800,duration: 500, ease: easePolyOut}
+            }}
+        >
+            {({opacity}) => {
+                return(
+                    <div 
+                        className="featured_player"
+                        style={{
+                            opacity,
+                            background: `url(${FeaturePlayer}) no-repeat`,
+                            transform: `translate(500px,201px)`
+                        }}>
+                        
+                    </div>
+                )
+            }}
+        </Animate>
+    )
+
     render() {
         return (
             <div className="featured_text">
+                {this.animatePlayer()}
                 {this.animateNumber()}
                 {this.animateFirst()}
+                {this.animateSecond()}
             </div>
         );
     }
