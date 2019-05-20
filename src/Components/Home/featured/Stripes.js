@@ -51,11 +51,11 @@ class Stripes extends Component {
                     left: [stripe.left],
                     rotate: [stripe.rotate],
                     top: [stripe.top],
-                    events: {
-                        end() {
-                            console.log('Animation end')
-                        }
-                    }
+                    // events: {
+                    //     end() {
+                    //         console.log('Animation end')
+                    //     }
+                    // }
                 }}
             >
                 {({background, left, opacity, rotate, top}) => {
