@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import logoUrl from './../Resources/images/logos/manchester_city_logo.png';
+import logoUrl from './../../Resources/images/logos/manchester_city_logo.png';
 
 const TeamLogo = (props) => {
    

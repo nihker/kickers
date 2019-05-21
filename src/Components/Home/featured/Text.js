@@ -6,6 +6,8 @@ import FeaturePlayer from '../../../Resources/images/featured_player.png'
 
 class Text extends Component {
 
+    playerName = 'featured_player';
+
     animateNumber = () => (
         <Animate
             show={true}

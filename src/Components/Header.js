@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 
 import { Link } from 'react-router-dom';
-import TeamLogo from './../ui/icons';
+import TeamLogo from './ui/icons';
 
 const Header = (props) =>  {
     return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { firebaseMatches } from './../../../firebase';
-import { firebaseLooper } from './../../../ui/misc';
-import MatchesBlock from './../../../ui/macthes_block';
+import { firebaseLooper } from '../../ui/misc';
+import MatchesBlock from '../../ui/macthes_block';
 import Slide from 'react-reveal/Slide';
 
 class Blocks extends Component {
