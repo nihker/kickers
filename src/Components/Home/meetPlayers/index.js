@@ -13,7 +13,7 @@ class MeetPlayers extends Component {
     render() {
         return (
             <Fade
-                fraction={0.4}
+                fraction={0.7}
                 onReveal={
                     () => {
                         this.setState({
