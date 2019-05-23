@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormField = ({formdata,id}) => {
+const FormField = ({formdata,id,change}) => {
 
     const renderTemp = () => {
         let formTemplate = null;
@@ -12,7 +12,7 @@ const FormField = ({formdata,id}) => {
                         <input
                             {...formdata.config}
                             value={formdata.value}
-                            onChange={(event) => }
+                            onChange={(event) => change({event, id})}
                         />
                     </div>
                 )
