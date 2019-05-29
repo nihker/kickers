@@ -121,6 +121,55 @@ class AddEditMatch extends Component {
                 validationMessage: '',
                 showlabel: true
             },
+            stadium: {
+                element: 'input',
+                value: '',
+                config: {
+                    label: 'Stadium',
+                    name: 'stadium_input',
+                    type: 'text'
+                },
+                validation: {
+                    required: true
+                },
+                valid: false,
+                validationMessage: '',
+                showlabel: true
+            },
+            result: {
+                element: 'select',
+                value: '',
+                config: {
+                    label: 'Team result',
+                    name: 'select_result',
+                    type: 'select',
+                    options: [{ key: 'W', value: 'Win' }, { key: 'Lose', value: 'L' }, { key: 'Draw', value: 'D' }, { key: 'n/a', value: 'n/a' }]
+                },
+                validation: {
+                    required: true,
+                    email: true
+                },
+                valid: false,
+                validationMessage: '',
+                showlabel: true
+            },
+            final: {
+                element: 'select',
+                value: '',
+                config: {
+                    label: 'Game played ?',
+                    name: 'select_palyed',
+                    type: 'select',
+                    options: [{ key: 'Yes', value: 'Yes' }, { key: 'No', value: 'No' }]
+                },
+                validation: {
+                    required: true,
+                    email: true
+                },
+                valid: false,
+                validationMessage: '',
+                showlabel: true
+            },
 
         }
     }
@@ -178,6 +227,52 @@ class AddEditMatch extends Component {
                                         />
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className="split_fields">
+                                <FormField
+                                    id={'referee'}
+                                    formdata={this.state.formdata.referee}
+                                    change={(element) => this.updateForm(element)}
+                                />
+
+                                <FormField
+                                    id={'stadium'}
+                                    formdata={this.state.formdata.stadium}
+                                    change={(element) => this.updateForm(element)}
+                                />
+                            </div>
+
+
+                            <div className="split_fields last">
+                                <FormField
+                                    id={'result'}
+                                    formdata={this.state.formdata.result}
+                                    change={(element) => this.updateForm(element)}
+                                />
+
+                                <FormField
+                                    id={'final'}
+                                    formdata={this.state.formdata.final}
+                                    change={(element) => this.updateForm(element)}
+                                />
+                            </div>
+
+                            <div className="success_label">
+                                {this.state.formSuccess}
+                            </div>
+                            {
+                                this.state.formError ?
+                                <div className="error_label">
+                                    Something is wrong
+                                </div>
+                                : ''
+                            }
+
+                            <div className="admin_submit">
+                                <button onClick={(event) => this.submitForm(event)}>
+                                    {this.state.formType}
+                                </button>
                             </div>
 
                         </form>
