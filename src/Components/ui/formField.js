@@ -50,7 +50,7 @@ const FormField = ({ formdata, id, change }) => {
                             vlaue={formdata.value}
                             onChange={(event) => change({ event, id })}
                         >
-                            <option value="">Select one</option>
+                            <option value={formdata.value}>{formdata.value}</option>
                             {
                                 formdata.config.options.map((item) => (
                                     <option key={item.key} value={item.key}>

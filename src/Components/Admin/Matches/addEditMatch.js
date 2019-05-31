@@ -107,21 +107,6 @@ class AddEditMatch extends Component {
                 validationMessage: '',
                 showlabel: true
             },
-            referee: {
-                element: 'input',
-                value: '',
-                config: {
-                    label: 'Referee',
-                    name: 'referee_input',
-                    type: 'text'
-                },
-                validation: {
-                    required: true
-                },
-                valid: false,
-                validationMessage: '',
-                showlabel: true
-            },
             stadium: {
                 element: 'input',
                 value: '',
@@ -147,8 +132,7 @@ class AddEditMatch extends Component {
                     options: [{ key: 'W', value: 'Win' }, { key: 'Lose', value: 'L' }, { key: 'Draw', value: 'D' }, { key: 'n/a', value: 'n/a' }]
                 },
                 validation: {
-                    required: true,
-                    email: true
+                    required: true
                 },
                 valid: false,
                 validationMessage: '',
@@ -164,8 +148,7 @@ class AddEditMatch extends Component {
                     options: [{ key: 'Yes', value: 'Yes' }, { key: 'No', value: 'No' }]
                 },
                 validation: {
-                    required: true,
-                    email: true
+                    required: true
                 },
                 valid: false,
                 validationMessage: '',
@@ -196,14 +179,19 @@ class AddEditMatch extends Component {
         }
 
         for(let key in newFormdata) {
+            
             if(match) {
                 newFormdata[key].value = match[key];
                 newFormdata[key].valid = true;
             }
+
             if(key === 'local' || key === 'away') {
+                console.log(teamOptions)
                 newFormdata[key].config.options = teamOptions;
             }
         }
+
+        console.log(newFormdata);
 
         this.setState({
             matchId,
@@ -233,12 +221,72 @@ class AddEditMatch extends Component {
         }
 
         if(!matchId) {
-            // add match
+            getTeams(false, 'Add Match')
         } else {
            firebaseDatabase.ref(`matches/${matchId}`).once('value')
             .then((snapshot) => {
                 const match = snapshot.val();
                 getTeams(match, 'Edit Match')
+            })
+        }
+    }
+
+    successForm(message) {
+        this.setState({
+            formSuccess: message
+        });
+
+        setTimeout(() => {
+            this.setState({
+                formSuccess: ''
+            })
+        }, 2000);
+    }
+
+    submitForm(event) {
+        event.preventDefault();
+
+        let dataToSubmit = {};
+        let formIsValid = true;
+
+        for (let key in this.state.formdata) {
+            dataToSubmit[key] = this.state.formdata[key].value;
+            formIsValid = this.state.formdata[key].valid && formIsValid;
+        }
+
+        this.state.teams.forEach((team) => {
+            if(team.shortName === dataToSubmit.local){
+                dataToSubmit['localThmb'] = team.thmb
+            }
+
+            if(team.shortName === dataToSubmit.away){
+                dataToSubmit['awayThmb'] = team.thmb
+            }
+        })
+
+        if (formIsValid) {
+            if(this.state.formType === 'Edit Match') {
+                firebaseDatabase.ref(`matches/${this.state.matchId}`)
+                .update(dataToSubmit)
+                .then(() => {
+                    this.successForm('Update correctly');
+                }).catch((e) => {
+                    this.setState({
+                        formError: true
+                    })
+                })
+            } else {
+                firebaseMatches.push(dataToSubmit).then(() => {
+                    this.props.history.push('/admin_matches')
+                }).catch((e) => {
+                    this.setState({
+                        formError: true
+                    })
+                })
+            }
+        } else {
+            this.setState({
+                formError: true
             })
         }
     }
