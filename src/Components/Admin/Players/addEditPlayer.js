@@ -106,10 +106,12 @@ class AddEditPlayers extends Component {
 
         if(playerId) {
             this.setState({
-                formType: 'Add player'
+                formType: 'Edit player'
             })
         } else {
-
+            this.setState({
+                formType: 'Add player'
+            })
         }
     }
 
