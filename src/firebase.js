@@ -19,11 +19,13 @@ var config = {
   const firebaseMatches = firebaseDatabase.ref('matches');
   const firebasePromotions = firebaseDatabase.ref('promotions');
   const firebaseTeams = firebaseDatabase.ref('teams');
+  const firebasePlayers = firebaseDatabase.ref('players');
 
   export {
     firebase,
     firebaseMatches,
     firebasePromotions,
     firebaseTeams,
+    firebasePlayers,
     firebaseDatabase
   }
