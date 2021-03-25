@@ -1,22 +1,21 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png" alt="Logo" width="140" height="100">
-
-  <h3 align="center">Kickers</h3>
-
-  <p align="center">
-    Kickes React Singel Page App
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-  </p>
-</p>
+## Website - Kickers 
 
 This is a Kickers Single Page App create with React 
 
+## Start project
+
+``` bash
+# install dependencies
+yarn
+
+# serve with hot reload at localhost:3000
+npm start
+
+```
+
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+* [yarn](https://www.npmjs.com/package/yarn)
 * [material-ui/core](https://material-ui.com/)
 * [d3-ease](https://github.com/d3/d3-ease)
 * [firebase](https://firebase.google.com/)
